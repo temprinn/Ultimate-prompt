@@ -1,0 +1,16 @@
+meta {
+  name: List Tool Types
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/meta/tool-types
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.ok: eq true
+}

@@ -1,0 +1,21 @@
+meta {
+  name: Copy Prompt
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/prompts/{{promptId}}/copy
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{freeToken}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.ok: eq true
+  res.body.data.message: eq คัดลอกสำเร็จ!
+}

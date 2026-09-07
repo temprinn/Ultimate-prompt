@@ -1,0 +1,20 @@
+meta {
+  name: Toggle Favorite
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/prompts/{{promptId}}/favorite
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{freeToken}}
+}
+
+assert {
+  res.status: eq 200
+  res.body.ok: eq true
+}

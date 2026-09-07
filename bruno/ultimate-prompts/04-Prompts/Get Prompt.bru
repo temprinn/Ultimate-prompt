@@ -1,0 +1,16 @@
+meta {
+  name: Get Prompt
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/api/prompts/{{promptId}}
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.ok: eq true
+}

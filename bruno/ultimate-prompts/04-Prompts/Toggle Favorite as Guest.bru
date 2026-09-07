@@ -1,0 +1,17 @@
+meta {
+  name: Toggle Favorite as Guest
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/api/prompts/{{promptId}}/favorite
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 401
+  res.body.ok: eq false
+  res.body.error.code: eq UNAUTHORIZED
+}

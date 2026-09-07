@@ -1,0 +1,42 @@
+meta {
+  name: Create Prompt
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/prompts
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{adminToken}}
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Bruno Test Prompt",
+    "description": "พรอมต์ทดสอบจาก Bruno collection สำหรับ API",
+    "body": "คุณคือผู้ช่วยทดสอบ API ช่วยสรุปขั้นตอนการยิง request ด้วย Bruno ให้กระชับและชัดเจน",
+    "tags": ["QA", "Bruno", "API"],
+    "toolTypes": ["chat"],
+    "categories": ["operations"]
+  }
+}
+
+script:post-response {
+  const body = res.getBody();
+  if (body?.data?.id) {
+    bru.setEnvVar("createdPromptId", body.data.id);
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.ok: eq true
+}

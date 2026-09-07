@@ -1,0 +1,16 @@
+meta {
+  name: List Prompts Filtered
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/prompts?q=Marketing&toolTypes=chat&categories=marketing&sort=popular
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.ok: eq true
+}
