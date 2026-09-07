@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { CATEGORY_OPTIONS, TOOL_TYPE_OPTIONS } from "../constants";
-import { toggleMultiSelect, selectSingle } from "../lib/toggle-multi-select";
+import { selectSingle } from "../lib/toggle-multi-select";
 import type { CatalogFilters } from "../types";
 import { cn } from "@/lib/utils";
 
@@ -47,7 +47,7 @@ export function FilterPanel({ filters, onChange }: FilterPanelProps) {
                 onClick={() =>
                   onChange({
                     ...filters,
-                    toolTypeIds: toggleMultiSelect(
+                    toolTypeIds: selectSingle(
                       filters.toolTypeIds,
                       option.id,
                       "all"

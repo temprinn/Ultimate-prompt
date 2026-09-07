@@ -56,13 +56,6 @@ CREATE TABLE sessions (
     ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE verification_tokens (
-  identifier VARCHAR(255) NOT NULL,
-  token VARCHAR(255) NOT NULL,
-  expires_at DATETIME(3) NOT NULL,
-  PRIMARY KEY (identifier, token)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 CREATE TABLE prompts (
   id CHAR(36) NOT NULL,
   created_by CHAR(36) NULL,

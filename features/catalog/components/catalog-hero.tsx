@@ -3,7 +3,7 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { ExternalLink, Plus, Search } from "lucide-react";
+import { ExternalLink, Search } from "lucide-react";
 import { useRef } from "react";
 import { useFocusOnSlash } from "../hooks/use-focus-on-slash";
 
@@ -47,15 +47,6 @@ export function CatalogHero({
         </div>
 
         <div className="flex w-full items-center gap-2 lg:max-w-xl">
-          <Button
-            type="button"
-            size="icon-lg"
-            className="size-11 rounded-full"
-            aria-label="สร้างพรอมต์"
-            onClick={onCreateClick}
-          >
-            <Plus className="size-5" />
-          </Button>
           <div className="relative min-w-0 flex-1">
             <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -71,6 +62,14 @@ export function CatalogHero({
               /
             </kbd>
           </div>
+          <Button
+            type="button"
+            size="lg"
+            className="h-11 shrink-0 rounded-full px-4"
+            onClick={onCreateClick}
+          >
+            สร้าง prompt +
+          </Button>
         </div>
       </div>
     </section>
