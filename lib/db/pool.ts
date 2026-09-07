@@ -6,10 +6,14 @@ const globalForDb = globalThis as unknown as {
   mysqlPool?: mysql.Pool;
 };
 
+function normalizePem(value: string) {
+  return value.replace(/\\n/g, "\n").trim();
+}
+
 function resolveCa(): string | undefined {
   const caCert = process.env.MYSQL_CA_CERT?.trim();
   if (caCert) {
-    return caCert;
+    return normalizePem(caCert);
   }
 
   const caPath = process.env.MYSQL_CA_PATH;

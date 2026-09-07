@@ -12,7 +12,13 @@ import { getAuth, type Auth } from "firebase-admin/auth";
 function loadServiceAccount(): ServiceAccount {
   const credentialsJson = process.env.FIREBASE_ADMIN_CREDENTIALS_JSON?.trim();
   if (credentialsJson) {
-    return JSON.parse(credentialsJson) as ServiceAccount;
+    const parsed = JSON.parse(credentialsJson) as ServiceAccount & {
+      private_key?: string;
+    };
+    if (typeof parsed.private_key === "string") {
+      parsed.private_key = parsed.private_key.replace(/\\n/g, "\n");
+    }
+    return parsed;
   }
 
   const credentialsPath = process.env.FIREBASE_ADMIN_CREDENTIALS_PATH;
