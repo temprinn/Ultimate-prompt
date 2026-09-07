@@ -2,7 +2,6 @@ import { fail, ok } from "@/lib/api/http";
 import { getApiErrorMessage } from "@/lib/api/error";
 import { upsertFirebaseUser } from "@/lib/auth/firebase-user";
 import { createSession } from "@/lib/auth/session";
-import { verifyFirebaseIdToken } from "@/lib/firebase/admin";
 
 export const runtime = "nodejs";
 
@@ -34,6 +33,7 @@ export async function POST(request: Request) {
       );
     }
 
+    const { verifyFirebaseIdToken } = await import("@/lib/firebase/admin");
     const decoded = await verifyFirebaseIdToken(idToken);
     const user = await upsertFirebaseUser(decoded);
     const token = await createSession(user.id);
