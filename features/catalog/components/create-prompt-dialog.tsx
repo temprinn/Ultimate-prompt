@@ -138,7 +138,10 @@ export function CreatePromptDialog({
           </label>
 
           <label className="grid gap-1.5">
-            <span className="text-sm font-medium">แท็ก (คั่นด้วยจุลภาค)</span>
+            <span className="flex items-center justify-between gap-2 text-sm font-medium">
+              <span>แท็ก (คั่นด้วยจุลภาค)</span>
+              <span className="font-normal text-muted-foreground">(ไม่บังคับ)</span>
+            </span>
             <Input
               value={values.tags}
               onChange={(event) => update("tags", event.target.value)}

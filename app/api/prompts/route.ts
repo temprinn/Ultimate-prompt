@@ -54,7 +54,6 @@ export async function POST(request: Request) {
   if (title.length < 3) return fail("ชื่อเรื่องต้องมีอย่างน้อย 3 ตัวอักษร");
   if (description.length < 10) return fail("คำอธิบายย่อต้องมีอย่างน้อย 10 ตัวอักษร");
   if (promptBody.length < 20) return fail("เนื้อหาพรอมต์ต้องมีอย่างน้อย 20 ตัวอักษร");
-  if (tags.length === 0) return fail("ต้องมีแท็กอย่างน้อย 1 รายการ");
   if (toolTypes.length === 0) return fail("ต้องเลือกประเภทเครื่องมืออย่างน้อย 1 รายการ");
   if (categories.length === 0) return fail("ต้องเลือกหมวดหมู่อย่างน้อย 1 รายการ");
 

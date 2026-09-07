@@ -47,9 +47,6 @@ export function validatePromptForm(values: PromptFormValues): PromptFormErrors {
   if (titleError) errors.title = titleError;
   if (descriptionError) errors.description = descriptionError;
   if (bodyError) errors.body = bodyError;
-  if (parseTagList(values.tags).length === 0) {
-    errors.tags = "กรุณาใส่แท็กอย่างน้อย 1 รายการ";
-  }
   if (values.toolTypeIds.length === 0) {
     errors.toolTypeIds = "กรุณาเลือกประเภทเครื่องมืออย่างน้อย 1 รายการ";
   }
